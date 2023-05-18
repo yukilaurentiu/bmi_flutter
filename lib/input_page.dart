@@ -22,12 +22,14 @@ class _InputPageState extends State<InputPage> {
     if (gender == 1) {
       if (maleColor == inactiveColor) {
         maleColor = basicColor;
+        femaleColor = inactiveColor;
       } else {
         maleColor = inactiveColor;
       }
     } else if (gender == 2) {
       if (femaleColor == inactiveColor) {
         femaleColor = basicColor;
+        maleColor = inactiveColor;
       } else {
         femaleColor = inactiveColor;
       }
