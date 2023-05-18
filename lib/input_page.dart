@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+const bottomContainerHeight = 80.0;
+const basicColor = Color(0xFF1D1F33);
+const footerColor = Color(0xFFEB1555);
+
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
   @override
@@ -40,6 +44,13 @@ class _InputPageState extends State<InputPage> {
               ),
             ],
           )),
+          Container(
+            // child: Text('hello'),
+            color: footerColor,
+            margin: const EdgeInsets.only(top: 10.0),
+            width: double.infinity,
+            height: bottomContainerHeight,
+          ),
         ],
       ),
     );
@@ -47,8 +58,7 @@ class _InputPageState extends State<InputPage> {
 }
 
 class ReusableCard extends StatelessWidget {
-
-  ReusableCard({this.color = const Color(0xFF1D1F33)});
+  ReusableCard({this.color = basicColor});
   final Color color;
 
   @override
