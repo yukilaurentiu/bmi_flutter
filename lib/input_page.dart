@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
+import 'constants.dart';
 
-const bottomContainerHeight = 80.0;
-const basicColor = Color(0xFF1D1F33);
-const inactiveColor = Color(0xFF111328);
-const footerColor = Color(0xFFEB1555);
 
 enum GenderType { male, female, none }
 
@@ -84,6 +81,11 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: ReusableCard(
               color: basicColor,
+              cardChild: Column(
+                children: <Widget>[
+                  Text('HEIGHT')
+                ],
+              ),
             ),
           ),
           Expanded(

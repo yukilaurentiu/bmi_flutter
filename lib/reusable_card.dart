@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'input_page.dart';
+import 'constants.dart';
+
 
 class ReusableCard extends StatelessWidget {
   ReusableCard({this.color = inactiveColor, this.cardChild, this.onTap});
