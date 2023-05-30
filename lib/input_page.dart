@@ -25,7 +25,7 @@ class _InputPageState extends State<InputPage> {
   // }
 
   // GenderType gender = GenderType.none;
-  // void updateColor(GenderType g) {
+  // void updateColor(GenderType g) {F
   //   if (g == gender) {
   //     gender = GenderType.none;
   //     maleColor = inactiveColor;
@@ -101,17 +101,26 @@ class _InputPageState extends State<InputPage> {
                       const Text('cm', style: labelTextStyle),
                     ],
                   ),
-                  Slider(
-                      value: height.toDouble(),
-                      min: 120.0,
-                      max: 220.0,
-                      activeColor: footerColor,
-                      inactiveColor: Color(0xFF8D8E98),
-                      onChanged: (double newValue) {
-                        setState(() {
-                          height = newValue.round();
-                        });
-                      })
+                  SliderTheme(
+                    data: const SliderThemeData(
+                      activeTrackColor: Colors.white,
+                        inactiveTrackColor: Color(0xFF8D8E98),
+                        thumbColor: pinkColor,
+                        overlayColor: Color(0x29EB1555),
+                        thumbShape: RoundSliderThumbShape(
+                            enabledThumbRadius: 15.0),
+                        overlayShape:
+                            const RoundSliderOverlayShape(overlayRadius: 30.0)),
+                    child: Slider(
+                        value: height.toDouble(),
+                        min: 120.0,
+                        max: 220.0,
+                        onChanged: (double newValue) {
+                          setState(() {
+                            height = newValue.round();
+                          });
+                        }),
+                  )
                 ],
               ),
             ),
@@ -133,7 +142,7 @@ class _InputPageState extends State<InputPage> {
           )),
           Container(
             // child: Text('hello'),
-            color: footerColor,
+            color: pinkColor,
             margin: const EdgeInsets.only(top: 10.0),
             width: double.infinity,
             height: bottomContainerHeight,
