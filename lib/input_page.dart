@@ -18,6 +18,7 @@ class _InputPageState extends State<InputPage> {
 
   GenderType? selectedGender;
   int height = 180;
+  int weight = 60;
 
   // void updateColor(GenderType gender){
   //   gender == GenderType.male ? maleColor = basicColor : maleColor = inactiveColor;
@@ -103,14 +104,14 @@ class _InputPageState extends State<InputPage> {
                   ),
                   SliderTheme(
                     data: const SliderThemeData(
-                      activeTrackColor: Colors.white,
+                        activeTrackColor: Colors.white,
                         inactiveTrackColor: Color(0xFF8D8E98),
                         thumbColor: pinkColor,
                         overlayColor: Color(0x29EB1555),
-                        thumbShape: RoundSliderThumbShape(
-                            enabledThumbRadius: 15.0),
+                        thumbShape:
+                            RoundSliderThumbShape(enabledThumbRadius: 15.0),
                         overlayShape:
-                            const RoundSliderOverlayShape(overlayRadius: 30.0)),
+                            RoundSliderOverlayShape(overlayRadius: 30.0)),
                     child: Slider(
                         value: height.toDouble(),
                         min: 120.0,
@@ -131,6 +132,40 @@ class _InputPageState extends State<InputPage> {
               Expanded(
                 child: ReusableCard(
                   color: basicColor,
+                  cardChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      const Text(
+                        'WEIGHT',
+                        style: labelTextStyle,
+                      ),
+                      Text(
+                        weight.toString(),
+                        style: cardTextStyle,
+                      ),
+                      Row(mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          RoundIconButton(
+                          icon: FontAwesomeIcons.plus,
+                            onTap: (){
+                            setState(() {
+                              weight++;
+                            });
+                            }
+                          ),
+                          const SizedBox(width: 10.0),
+                          RoundIconButton(
+                          icon: FontAwesomeIcons.minus,
+                            onTap: (){
+                            setState(() {
+                              weight--;
+                            });
+                            }
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
               Expanded(
@@ -150,5 +185,23 @@ class _InputPageState extends State<InputPage> {
         ],
       ),
     );
+  }
+}
+
+class RoundIconButton extends StatelessWidget {
+  RoundIconButton({this.icon, this.onTap});
+  final IconData? icon;
+  final VoidCallback? onTap;
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      child: Icon(icon),
+      constraints: const BoxConstraints.tightFor(
+          width: 56.0,
+          height: 56.0,
+        ),
+      shape: const CircleBorder(),
+        fillColor: const Color(0xFF4C4F5E),
+        onPressed: onTap);
   }
 }
