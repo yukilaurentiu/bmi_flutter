@@ -19,6 +19,7 @@ class _InputPageState extends State<InputPage> {
   GenderType? selectedGender;
   int height = 180;
   int weight = 60;
+  int age = 25;
 
   // void updateColor(GenderType gender){
   //   gender == GenderType.male ? maleColor = basicColor : maleColor = inactiveColor;
@@ -143,25 +144,24 @@ class _InputPageState extends State<InputPage> {
                         weight.toString(),
                         style: cardTextStyle,
                       ),
-                      Row(mainAxisAlignment: MainAxisAlignment.center,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           RoundIconButton(
-                          icon: FontAwesomeIcons.plus,
-                            onTap: (){
-                            setState(() {
-                              weight++;
-                            });
-                            }
-                          ),
+                              icon: FontAwesomeIcons.plus,
+                              onTap: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              }),
                           const SizedBox(width: 10.0),
                           RoundIconButton(
-                          icon: FontAwesomeIcons.minus,
-                            onTap: (){
-                            setState(() {
-                              weight--;
-                            });
-                            }
-                          ),
+                              icon: FontAwesomeIcons.minus,
+                              onTap: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              }),
                         ],
                       )
                     ],
@@ -169,8 +169,47 @@ class _InputPageState extends State<InputPage> {
                 ),
               ),
               Expanded(
-                child: ReusableCard(
-                  color: basicColor,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: ReusableCard(
+                        color: basicColor,
+                        cardChild: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            const Text(
+                              'AGE',
+                              style: labelTextStyle,
+                            ),
+                            Text(
+                              age.toString(),
+                              style: cardTextStyle,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                RoundIconButton(
+                                    icon: FontAwesomeIcons.plus,
+                                    onTap: () {
+                                      setState(() {
+                                        age--;
+                                      });
+                                    }),
+                                const SizedBox(width: 10.0),
+                                RoundIconButton(
+                                    icon: FontAwesomeIcons.minus,
+                                    onTap: () {
+                                      setState(() {
+                                        age--;
+                                      });
+                                    }),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -195,12 +234,12 @@ class RoundIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
-      child: Icon(icon),
-      constraints: const BoxConstraints.tightFor(
+        child: Icon(icon),
+        constraints: const BoxConstraints.tightFor(
           width: 56.0,
           height: 56.0,
         ),
-      shape: const CircleBorder(),
+        shape: const CircleBorder(),
         fillColor: const Color(0xFF4C4F5E),
         onPressed: onTap);
   }
