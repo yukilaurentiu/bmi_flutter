@@ -1,3 +1,4 @@
+import 'package:bmi_flutter/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
@@ -214,12 +215,24 @@ class _InputPageState extends State<InputPage> {
               ),
             ],
           )),
-          Container(
-            // child: Text('hello'),
-            color: pinkColor,
-            margin: const EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            height: bottomContainerHeight,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const ResultPage();
+                  },
+                ),
+              );
+            },
+            child: Container(
+              color: pinkColor,
+              margin: const EdgeInsets.only(top: 10.0),
+              width: double.infinity,
+              height: bottomContainerHeight,
+              child: const Text('CALCULATE'),
+            ),
           ),
         ],
       ),
@@ -234,13 +247,14 @@ class RoundIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
-        child: Icon(icon),
-        constraints: const BoxConstraints.tightFor(
-          width: 56.0,
-          height: 56.0,
-        ),
-        shape: const CircleBorder(),
-        fillColor: const Color(0xFF4C4F5E),
-        onPressed: onTap);
+      constraints: const BoxConstraints.tightFor(
+        width: 56.0,
+        height: 56.0,
+      ),
+      shape: const CircleBorder(),
+      fillColor: const Color(0xFF4C4F5E),
+      onPressed: onTap,
+      child: Icon(icon),
+    );
   }
 }
